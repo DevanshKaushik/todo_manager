@@ -7,7 +7,7 @@ development:
   <<: *default
   host: localhost
   user: postgres
-  password: devansh0711
+  password: password
   database: saas_db
 
 # Warning: The database defined as "test" will be erased and
