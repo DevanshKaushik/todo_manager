@@ -20,6 +20,12 @@ class UsersController < ApplicationController
     render plain: response_text
   end
 
+  def show
+    id = params[:id]
+    user = User.find(id)
+    render plain: user.to_pleasant_string
+  end
+
   def login
     user_email = params[:email]
     user_password = params[:password]
