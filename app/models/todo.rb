@@ -1,6 +1,21 @@
 class Todo < ActiveRecord::Base
-  def to_pleasant_string
-    is_comlpeted = completed ? "[X]" : "[ ]"
-    "#{id}. #{due_date.to_s(:long)} #{todo_text} #{is_comlpeted}"
+  def due_today?
+    due_date == Date.today
+  end
+
+  def self.completed
+    where(completed: true)
+  end
+
+  def self.overdue
+    where("due_date < ?", Date.today)
+  end
+
+  def self.due_today
+    where("due_date = ?", Date.today)
+  end
+
+  def self.due_later
+    where("due_date > ?", Date.today)
   end
 end
