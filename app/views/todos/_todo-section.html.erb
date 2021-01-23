@@ -8,7 +8,7 @@
     <% todos.each do |todo| %>
       <% checked = todo.completed ? "checked" : nil %>
       <li class="TodoItem">
-          <div class="TodoItem-container <%= checked %>">
+        <div class="TodoItem-container <%= checked %>">
           <input
             class= "TodoItem-checkbox"
             type="checkbox"
