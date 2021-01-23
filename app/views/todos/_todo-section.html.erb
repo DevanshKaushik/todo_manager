@@ -6,16 +6,17 @@
 
   <ul>
     <% todos.each do |todo| %>
-      <% checked = todo.completed ? "checked" : nil %>
+
       <li class="TodoItem">
-        <div class="TodoItem-container <%= checked %>">
+        <div class="TodoItem-container <%= todo.completed ? "checked" : nil %>">
           <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
-            <input
-              class= "TodoItem-checkbox"
-              type="checkbox"
-              name="completed"
-              onclick="this.form.submit()"
-              <%= checked %> />
+            <%= check_box_tag(
+              "completed",
+              nil,
+              todo.completed,
+              class: "TodoItem-checkbox",
+              onclick: "this.form.submit()"
+            ) %>
           <% end %>
 
           <%= todo.todo_text%>
@@ -26,7 +27,7 @@
 
           <a class="TodoItem-delete" href="javascript:void(0)">
             <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
-              <input type="image" src="<%= asset_path("delete.svg") %>" alt="Delete Icon">
+              <%= image_submit_tag(asset_path("delete.svg"), alt: "Delete Icon") %>
             <% end %>
           </a>
         </div>
