@@ -9,11 +9,15 @@
       <% checked = todo.completed ? "checked" : nil %>
       <li class="TodoItem">
         <div class="TodoItem-container <%= checked %>">
-          <input
-            class= "TodoItem-checkbox"
-            type="checkbox"
-            <%= checked %>
-          >
+          <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
+            <input
+              class= "TodoItem-checkbox"
+              type="checkbox"
+              name="completed"
+              onclick="this.form.submit()"
+              <%= checked %> />
+          <% end %>
+
           <%= todo.todo_text%>
 
           <% if show_due_date %>
