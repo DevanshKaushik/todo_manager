@@ -91,6 +91,10 @@ body {
   visibility: visible;
 }
 
+.TodoItem-container.checked {
+  text-decoration: line-through;
+}
+
 .TodoItem-checkbox {
   width: 16px;
   height: 16px;

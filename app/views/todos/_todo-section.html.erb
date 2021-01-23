@@ -5,10 +5,15 @@
   </div>
 
   <ul>
-    <% todos.each do |todo|%>
+    <% todos.each do |todo| %>
+      <% checked = todo.completed ? "checked" : nil %>
       <li class="TodoItem">
-        <div class="TodoItem-container">
-          <input class="TodoItem-checkbox" type="checkbox">
+          <div class="TodoItem-container <%= checked %>">
+          <input
+            class= "TodoItem-checkbox"
+            type="checkbox"
+            <%= checked %>
+          >
           <%= todo.todo_text%>
 
           <% if show_due_date %>
