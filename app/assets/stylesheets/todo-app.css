@@ -106,7 +106,7 @@ body {
   margin-left: 20px;
 }
 
-.TodoItem-delete img {
+.TodoItem-delete input {
   width: 16px;
 }
 
