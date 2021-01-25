@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
+  skip_before_action :ensure_user_login
+
   def new
     render "users/new"
-  end
-
-  def index
-    render plain: User.all.map { |user| user.to_pleasant_string }.join("\n")
   end
 
   def create
@@ -16,23 +14,5 @@ class UsersController < ApplicationController
     )
 
     redirect_to "/"
-  end
-
-  def show
-    id = params[:id]
-    user = User.find(id)
-    render plain: user.to_pleasant_string
-  end
-
-  def login
-    user_email = params[:email]
-    user_password = params[:password]
-
-    user = User.find_by(email: user_email, password: user_password)
-    if user.nil?
-      render plain: false
-    else
-      render plain: true
-    end
   end
 end
