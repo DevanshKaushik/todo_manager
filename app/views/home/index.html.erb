@@ -1,2 +1,9 @@
-<p>Welcome to Todo Manager Home page</p>
-<p>If you are a new user, Sign-Up here</p>
+<h1 class="Home-title">Welcome to Todo Manager Home page</h1>
+
+<h3 class="Home-authenticate">
+  If you are a new user, <%= link_to "Sign-Up here", new_user_path %>
+</h3>
+
+<h3 class="Home-authenticate">
+  If you are an existing user, <%= link_to "Sign-In here", new_sessions_path %>
+</h3>
